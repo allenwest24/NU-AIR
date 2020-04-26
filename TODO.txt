@@ -1,12 +1,15 @@
 Comprehensive List of Things We Want to Do:
 - Login
-- Create list of desired classes by priority
-- give the option to upload list of 
+- Two different types of entering classes
+    - Create list of desired classes and rank by priority regardless of overlap in time. Allow for reording and deleting.
+    - Upload list of desired schedules from the "Plan Ahead" section on NEU. The website will require that they don't overlap in time so
+      all we have to check is if they all have a seat. If not, go to second menu or post a prompt that tells which has the most         
+      available classes and ask if they want to do this.
 - verify given CRN is real/available
 - check time card to register is now
-- print when it will be available
+- print when it will be available (how long until)
 - keep checking until available or otherwise cancelled.
 - print list of registered classes 
 - print list of classes not able to be registered to and why
 - README.md for usage instructions
-- help menu for usage
+- help menu for usage (NU-AIR -h (--help))
