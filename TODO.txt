@@ -1,15 +1,39 @@
 Comprehensive List of Things We Want to Do:
-- Login
-- Two different types of entering classes
-    - Create list of desired classes and rank by priority regardless of overlap in time. Allow for reording and deleting.
-    - Upload list of desired schedules from the "Plan Ahead" section on NEU. The website will require that they don't overlap in time so
-      all we have to check is if they all have a seat. If not, go to second menu or post a prompt that tells which has the most         
-      available classes and ask if they want to do this.
-- verify given CRN is real/available
-- check time card to register is now
-- print when it will be available (how long until)
-- keep checking until available or otherwise cancelled.
-- print list of registered classes 
-- print list of classes not able to be registered to and why
-- README.md for usage instructions
-- help menu for usage (NU-AIR -h (--help))
+- UI
+    - (DONE) Make main window
+    - (DONE) Add title to window
+    - (DONE) Make side bar options
+    - () Create prompts for the screens
+    - () Create run buttons for each screen that dynamically run according to method
+    - () Add logo in top left
+    - () Add Icons?
+    - () help bar
+
+- Execution
+    - () Login for first action that requires data from the website
+    - () Upload desired schedule from website ("Plan Ahead" section on NEU)
+        - () All we will have to do is translate into our version of a schedule so we can correct if needed
+        - () send this version of the schedule to the create a schedule tab.
+        - () all functions of the create a schedule part.
+    - () Create a list of dsired courses by CRN (/course name TBD) regardless of overlap in time.
+        - () description
+        - () Allow for reording and deleting. (preferrebly by drag and drop but idk)
+        - () verify given CRNs are real/available
+    - () Create a schedule on our app that resembles the online version
+        - () allow reordering and deletion
+        - () description
+        - () create multiple schedule and run on verious options
+            - () priority by entire schedule
+            - () priority by portion of schedule (first one that has 4 still available or whatever)
+            - () no schedule is available, make most optimal? (alot of algo work but it might be possible)
+        - () verify given CRNs are real/available
+    - () Sign up for the classes
+        - () report back the classes that were signed up for
+        - () report back what was unavailable and why
+        - () show list of classes still available with the same name that they were unable to book and is within available time slots?
+        - () schedule for specific times
+- Packaging
+    - () README.md for description
+    - () download instructions
+    - () license
+    - () resources
