@@ -1,5 +1,6 @@
-from PyQt5 import QtGui
+from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
 import sys
 
 class UI(QMainWindow):
@@ -96,41 +97,45 @@ class UI(QMainWindow):
 
     # Set pages
     def ui1(self):
-        main_layout = QVBoxLayout()
-        main_layout.addWidget(QLabel('Home'))
-        main_layout.addStretch(5)
+        main_layout = QGridLayout()
+        main_layout.addWidget(QLabel('Feature not yet available!'))
         main = QWidget()
+        main_layout.setAlignment(Qt.AlignCenter)
         main.setLayout(main_layout)
         return main
 
     def ui2(self):
-        main_layout = QVBoxLayout()
-        main_layout.addWidget(QLabel('By Priority'))
-        main_layout.addStretch(5)
+        main_layout = QGridLayout()
+        main_layout.addWidget(QLabel('Feature not yet available!'))
+        #bigEditor = QTextEdit()
+        #main_layout.addWidget(bigEditor, 0, 2, 4, 1)
+        #buttonBox = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
+        #main_layout.addWidget(buttonBox)
         main = QWidget()
+        main_layout.setAlignment(Qt.AlignCenter)
         main.setLayout(main_layout)
         return main
 
     def ui3(self):
-        main_layout = QVBoxLayout()
-        main_layout.addWidget(QLabel('Upload Mock Schedule'))
-        main_layout.addStretch(5)
+        main_layout = QGridLayout()
+        main_layout.addWidget(QLabel('Feature not yet available!'))
         main = QWidget()
+        main_layout.setAlignment(Qt.AlignCenter)
         main.setLayout(main_layout)
         return main
 
     def ui4(self):
-        main_layout = QVBoxLayout()
-        main_layout.addWidget(QLabel('Make Schedule'))
-        main_layout.addStretch(5)
+        main_layout = QGridLayout()
+        main_layout.addWidget(QLabel('Feature not yet available!'))
         main = QWidget()
+        main_layout.setAlignment(Qt.AlignCenter)
         main.setLayout(main_layout)
         return main
 
     def ui5(self):
-        main_layout = QVBoxLayout()
-        main_layout.addWidget(QLabel('Credits'))
-        main_layout.addStretch(5)
+        main_layout = QGridLayout()
+        main_layout.addWidget(QLabel('Feature not yet available!'))
         main = QWidget()
+        main_layout.setAlignment(Qt.AlignCenter)
         main.setLayout(main_layout)
         return main
