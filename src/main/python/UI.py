@@ -1,15 +1,18 @@
+# PyQt5 imports.
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 
+# Script imports.
 from PriorityScript import PriorityScript
 
+# General Python imports.
 import sys
 
+# Runs the user interface for the entire application.
 class UI(QMainWindow):
     def __init__(self):
         super().__init__()
-
         self.title = "NU-AIR (NU-And-Improved-Registration)"
         self.top = 100
         self.left = 100
@@ -20,11 +23,13 @@ class UI(QMainWindow):
         self.InitButtons()
         self.InitWindow()
 
+    # Initializes the main window to the desired parameters.
     def InitWindow(self):
         self.setWindowTitle(self.title)
         self.setGeometry(self.top, self.left, self.width, self.height)
         self.show()
 
+    # Initializes the menu buttons to move around the tabs in the app.
     def InitButtons(self):
         # Add all widgets
         self.home = QPushButton("Home", self)
@@ -33,6 +38,7 @@ class UI(QMainWindow):
         self.create = QPushButton('Make Schedule', self)
         self.credits = QPushButton('Credits', self)
 
+        # Connect the main buttons to their tabs.
         self.home.clicked.connect(self.button1)
         self.priority.clicked.connect(self.button2)
         self.upload.clicked.connect(self.button3)
@@ -49,6 +55,7 @@ class UI(QMainWindow):
         self.initUI()
 
     def initUI(self):
+        # Sets up the structure of the widgets that make up the main window.
         left_layout = QVBoxLayout()
         left_layout.addWidget(self.home)
         left_layout.addWidget(self.priority)
@@ -63,16 +70,19 @@ class UI(QMainWindow):
         self.right_widget = QTabWidget()
         self.right_widget.tabBar().setObjectName("mainTab")
 
+        # Adds the tabs structurally.
         self.right_widget.addTab(self.tab1, '')
         self.right_widget.addTab(self.tab2, '')
         self.right_widget.addTab(self.tab3, '')
         self.right_widget.addTab(self.tab4, '')
         self.right_widget.addTab(self.tab5, '')
 
+        # Style
         self.right_widget.setCurrentIndex(0)
         self.right_widget.setStyleSheet('''QTabBar::tab{width: 0; \
             height: 0; margin: 0; padding: 0; border: none;}''')
 
+        # Puts the layout together.
         main_layout = QHBoxLayout()
         main_layout.addWidget(left_widget)
         main_layout.addWidget(self.right_widget)
@@ -82,7 +92,7 @@ class UI(QMainWindow):
         main_widget.setLayout(main_layout)
         self.setCentralWidget(main_widget)
 
-    # Set buttons
+    # Set buttons.
     def button1(self):
         self.right_widget.setCurrentIndex(0)
 
@@ -98,7 +108,7 @@ class UI(QMainWindow):
     def button5(self):
         self.right_widget.setCurrentIndex(4)
 
-    # Set pages
+    # Set pages.
     def ui1(self):
         main_layout = QGridLayout()
         main_layout.addWidget(QLabel('Feature not yet available!'))
@@ -164,6 +174,8 @@ class UI(QMainWindow):
         main.setLayout(main_layout)
         return main
 
+    # Login popup box.
+    # TODO: Allen - make this shit take user input.
     def prompt_login(self):
         loginBox = QMessageBox()
         loginBox.setWindowTitle("Login to MyNEU")
@@ -172,8 +184,11 @@ class UI(QMainWindow):
         + "so for now we will just assume that the right stuff was entered")
         loginBox.setStandardButtons(QMessageBox.Apply | QMessageBox.Cancel)
         x = loginBox.exec()
+        # User pressed cancel.
         if (x == 4194304):
             print("Canceled")
+        # User pressed apply.
         elif (x == 33554432):
+            # TODO: Allen - Assure this functinality works for not just the priority.
             priorityScript = PriorityScript("username", "password", "CRNs")
             print(priorityScript.username)
