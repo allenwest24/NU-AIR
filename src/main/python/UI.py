@@ -1,6 +1,9 @@
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
+
+from PriorityScript import PriorityScript
+
 import sys
 
 class UI(QMainWindow):
@@ -165,32 +168,12 @@ class UI(QMainWindow):
         loginBox = QMessageBox()
         loginBox.setWindowTitle("Login to MyNEU")
         loginBox.setGeometry(409, 343, 680, 500)
-        loginBox.setText('This shit has been giving me such a hard time')
-
-        #username_label = QLabel("Username")
-        #loginBox.lineEdit_username = QLineEdit()
-        #loginBox.addWidget(username_label)
-        #loginBox.addWidget(loginBox.lineEdit_username)
-        #loginBox.lineEdit_username.setPlaceHolderText("Please enter your MyNEU "
-        #+ "username.")
-        #layout.addWidget(username_label, 0, 0)
-        #layout.addWidget(loginBox.lineEdit_username, 0, 1)
-
-        #password_label = QLabel("Password")
-        #loginBox.lineEdit_password = QLineEdit()
-        #loginBox.lineEdit_passwrod.setPlaceHolderText("Please enter your MyNEU "
-        #+ "password.")
-        #layout.addWidget(password_label, 1, 0)
-        #layout.addWidget(loginBox.lineEdit_password, 1, 1)
-
-        #button_login = QPushButton('Login')
-        #button_login.clicked.connect(self.check_password)
-        #layout.addWidget(button_login, 2, 0, 1, 2)
-        #layout.setRowMinimumHeight(2, 75)
-
-        #self.setLayout(layout)
-
-    #def check_password(self):
-        #pass
-        
+        loginBox.setText("This shit has been giving me such a hard time\n"
+        + "so for now we will just assume that the right stuff was entered")
+        loginBox.setStandardButtons(QMessageBox.Apply | QMessageBox.Cancel)
         x = loginBox.exec()
+        if (x == 4194304):
+            print("Canceled")
+        elif (x == 33554432):
+            priorityScript = PriorityScript("username", "password", "CRNs")
+            print(priorityScript.username)
