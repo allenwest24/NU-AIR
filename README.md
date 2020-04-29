@@ -13,3 +13,4 @@ NU-AIR automatically enrolls you in the most optimal set of classes (specified b
 - https://github.com/meieri/Agilecraft-Automation-Application/blob/master/src/main/python/main.py for initial setup of subclass structure.
 - https://www.luochang.ink/ for sidebar help.
 - https://build-system.fman.io/pyqt5-tutorial for useful documentation
+- https://www.bogotobogo.com/Qt/Qt5_GridLayout.php for formatting with PyQt5
