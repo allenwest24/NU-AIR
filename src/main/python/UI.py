@@ -106,13 +106,33 @@ class UI(QMainWindow):
 
     def ui2(self):
         main_layout = QGridLayout()
-        main_layout.addWidget(QLabel('Feature not yet available!'))
-        #bigEditor = QTextEdit()
-        #main_layout.addWidget(bigEditor, 0, 2, 4, 1)
-        #buttonBox = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
-        #main_layout.addWidget(buttonBox)
+        #main_layout.addWidget(QLabel('Feature not yet available!'))
+        bigEditor = QTextEdit()
+        main_layout.addWidget(bigEditor, 0, 1, 5, 4)
+        main_layout.addWidget(QPushButton("Clear"), 0, 0, 1, 1)
+        main_layout.addWidget(QPushButton("Check"), 1, 0, 1, 1)
+        main_layout.addWidget(QPushButton("Save"), 2, 0, 1, 1)
+        main_layout.addWidget(QPushButton("Run"), 3, 0, 1, 1)
+        main_layout.addWidget(QLabel('\n'), 4, 0, 1, 1)
+        main_layout.addWidget(QLabel('\n'), 5, 0, 1, 1)
+        main_layout.addWidget(QLabel("This method allows you to register for "
+        + "classes by listing the CRNs by priority. For the application to "
+        + "read \neach CRN in order, please place one on each line like so:\n\n"
+        + "8675309\n"
+        + "1234567\n"
+        + "1001010\n"
+        + "5318008\n\n"
+        + "and so on...\n\n"
+        + "When you are finally ready to submit your list of courses, the app "
+        + "you can press run!\n"
+        + "If it is you first time running any of the methods since you opened "
+        + "the application, it will prompt you to sign in.\n"
+        + "The application will tell you if your time slot is up, or how much "
+        + "time you have to wait. \n\nIf you keep the application running until "
+        + "your time card is up, it will automatically enroll you as soon as "
+        + "the website allows! :)"), 6, 0, 1, 4)
         main = QWidget()
-        main_layout.setAlignment(Qt.AlignCenter)
+        main_layout.setAlignment(Qt.AlignTop)
         main.setLayout(main_layout)
         return main
 
