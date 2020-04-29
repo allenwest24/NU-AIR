@@ -7,7 +7,7 @@ class UI(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.title = "NU-AIR"
+        self.title = "NU-AIR (NU-And-Improved-Registration)"
         self.top = 100
         self.left = 100
         self.width = 680
@@ -106,13 +106,13 @@ class UI(QMainWindow):
 
     def ui2(self):
         main_layout = QGridLayout()
-        #main_layout.addWidget(QLabel('Feature not yet available!'))
         bigEditor = QTextEdit()
+        runButton = QPushButton("Run")
         main_layout.addWidget(bigEditor, 0, 1, 5, 4)
         main_layout.addWidget(QPushButton("Clear"), 0, 0, 1, 1)
         main_layout.addWidget(QPushButton("Check"), 1, 0, 1, 1)
         main_layout.addWidget(QPushButton("Save"), 2, 0, 1, 1)
-        main_layout.addWidget(QPushButton("Run"), 3, 0, 1, 1)
+        main_layout.addWidget(runButton, 3, 0, 1, 1)
         main_layout.addWidget(QLabel('\n'), 4, 0, 1, 1)
         main_layout.addWidget(QLabel('\n'), 5, 0, 1, 1)
         main_layout.addWidget(QLabel("This method allows you to register for "
@@ -134,6 +134,7 @@ class UI(QMainWindow):
         main = QWidget()
         main_layout.setAlignment(Qt.AlignTop)
         main.setLayout(main_layout)
+        runButton.clicked.connect(self.prompt_login)
         return main
 
     def ui3(self):
@@ -159,3 +160,37 @@ class UI(QMainWindow):
         main_layout.setAlignment(Qt.AlignCenter)
         main.setLayout(main_layout)
         return main
+
+    def prompt_login(self):
+        loginBox = QMessageBox()
+        loginBox.setWindowTitle("Login to MyNEU")
+        loginBox.setGeometry(409, 343, 680, 500)
+        loginBox.setText('This shit has been giving me such a hard time')
+
+        #username_label = QLabel("Username")
+        #loginBox.lineEdit_username = QLineEdit()
+        #loginBox.addWidget(username_label)
+        #loginBox.addWidget(loginBox.lineEdit_username)
+        #loginBox.lineEdit_username.setPlaceHolderText("Please enter your MyNEU "
+        #+ "username.")
+        #layout.addWidget(username_label, 0, 0)
+        #layout.addWidget(loginBox.lineEdit_username, 0, 1)
+
+        #password_label = QLabel("Password")
+        #loginBox.lineEdit_password = QLineEdit()
+        #loginBox.lineEdit_passwrod.setPlaceHolderText("Please enter your MyNEU "
+        #+ "password.")
+        #layout.addWidget(password_label, 1, 0)
+        #layout.addWidget(loginBox.lineEdit_password, 1, 1)
+
+        #button_login = QPushButton('Login')
+        #button_login.clicked.connect(self.check_password)
+        #layout.addWidget(button_login, 2, 0, 1, 2)
+        #layout.setRowMinimumHeight(2, 75)
+
+        #self.setLayout(layout)
+
+    #def check_password(self):
+        #pass
+        
+        x = loginBox.exec()
