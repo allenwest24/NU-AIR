@@ -10,7 +10,8 @@ Comprehensive List of Things We Want to Do:
     - () help bar
 
 - Execution
-    - () Login for first action that requires data from the website
+    - (1/2) Login for first action that requires data from the website
+    - (DONE) Initiate the chromedriver
     - () Upload desired schedule from website ("Plan Ahead" section on NEU)
         - () All we will have to do is translate into our version of a schedule so we can correct if needed
         - () send this version of the schedule to the create a schedule tab.
@@ -33,7 +34,7 @@ Comprehensive List of Things We Want to Do:
         - () show list of classes still available with the same name that they were unable to book and is within available time slots?
         - () schedule for specific times
 - Packaging
-    - () README.md for description
+    - (In progress) README.md for description
     - () download instructions
     - () license
     - () resources
