@@ -3,6 +3,9 @@ from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 
+# Selenium imports
+from selenium import webdriver
+
 # Script imports.
 from PriorityScript import PriorityScript
 
@@ -191,5 +194,6 @@ class UI(QMainWindow):
         elif (x == 33554432):
             # TODO: Allen - Assure this functinality works for not just the priority.
             priorityScript = PriorityScript("username", "password", "CRNs")
-            print(priorityScript.username)
             priorityScript.run()
+            # TODO: Allen - delete this print check.
+            print(priorityScript.username)
