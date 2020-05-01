@@ -19,14 +19,18 @@ class PriorityScript:
 
     # Called from the UI
     def run(self):
-        # Have to add a chromedriver.
-        driver = webdriver.Chrome()
-        print("getting stuck here")
-        #self.login(driver)
+        # Add the chromedriver
+        chromedriver = r"C:\Users\Allen\Desktop\src\main\resources\base\chromedriver"
+        # TODO: Allen - figure out how to get_resource for the chromedriver.
+        #chromedriver = self.get_resource('chromedriver')
+        driver = webdriver.Chrome(chromedriver)
+        #driver.get("http:google.com")
+        self.login(driver)
 
     # Drvier is initialized during run()
     def login(self, driver):
-        driver.get ("https://neuidmsso.neu.edu/idp/profile/SAML2/POST/SSO?execution=e1s2")
-        driver.find_element_by_id("email").send_keys("username")
-        driver.find_element_by_id("pass").send_keys("password")
-        iver.find_element_by_id("loginbutton").click()
+        driver.get("https://my.northeastern.edu/")
+        # TBD below.
+        #driver.find_element_by_id("email").send_keys("username")
+        #driver.find_element_by_id("pass").send_keys("password")
+        #iver.find_element_by_id("loginbutton").click()
