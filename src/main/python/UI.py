@@ -192,3 +192,4 @@ class UI(QMainWindow):
             # TODO: Allen - Assure this functinality works for not just the priority.
             priorityScript = PriorityScript("username", "password", "CRNs")
             print(priorityScript.username)
+            priorityScript.run()
