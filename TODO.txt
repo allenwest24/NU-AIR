@@ -33,6 +33,7 @@ Comprehensive List of Things We Want to Do:
         - () report back what was unavailable and why
         - () show list of classes still available with the same name that they were unable to book and is within available time slots?
         - () schedule for specific times
+        
 - Packaging
     - (In progress) README.md for description
     - () download instructions
