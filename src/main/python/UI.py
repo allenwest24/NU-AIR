@@ -7,10 +7,14 @@ from PyQt5.QtGui import *
 from selenium import webdriver
 
 # Script imports.
-from PriorityScript import PriorityScript
+from ScriptRunner import ScriptRunner
 
 # General Python imports.
 import sys
+
+# TODO: Allen - Fix this monstrosity
+TEMP_USERNAME = "west.all"
+TEMP_PASS = "tenorrocks"
 
 # Runs the user interface for the entire application.
 class UI(QMainWindow):
@@ -21,6 +25,7 @@ class UI(QMainWindow):
         self.left = 100
         self.width = 680
         self.height = 500
+        temp_type = ""
         # TODO: Allen - Find and set the icon for top left corner next to title.
         #self.setWindowIcon(QtGui.QIcon(""))
         self.InitButtons()
@@ -150,6 +155,7 @@ class UI(QMainWindow):
         main = QWidget()
         main_layout.setAlignment(Qt.AlignTop)
         main.setLayout(main_layout)
+        self.temp_type = "priority"
         runButton.clicked.connect(self.prompt_login)
         return main
 
@@ -193,7 +199,5 @@ class UI(QMainWindow):
         # User pressed apply.
         elif (x == 33554432):
             # TODO: Allen - Assure this functinality works for not just the priority.
-            priorityScript = PriorityScript("username", "password", "CRNs")
-            priorityScript.run()
-            # TODO: Allen - delete this print check.
-            print(priorityScript.username)
+            scriptRunner = ScriptRunner(TEMP_USERNAME, TEMP_PASS, "CRNs", self.temp_type)
+            scriptRunner.run()
