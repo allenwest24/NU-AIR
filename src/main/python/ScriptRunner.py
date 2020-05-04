@@ -15,14 +15,13 @@ import sys
 import os
 import time
 
-PASS = "password"
-
 # Class that will handle the CRN priority registering version of the application.
-class PriorityScript:
-    def __init__(self, username, password, CRNs):
+class ScriptRunner:
+    def __init__(self, username, password, CRNs, type):
         self.username = username
         self.password = password
         self.crns = CRNs
+        self.type = type
 
     # Called from the UI
     def run(self):
@@ -32,18 +31,19 @@ class PriorityScript:
         #chromedriver = self.get_resource('chromedriver')
         driver = webdriver.Chrome(chromedriver)
         self.login(driver)
+        if (self.type == "priority"):
+            self.runPriorityScript(driver)
 
-    # Driver is initialized during run()
+    # Logs the user in, then opens a new tab to maneuver to the destination easier
     def login(self, driver):
         driver.get("https://my.northeastern.edu/")
         go_to_login = driver.find_elements_by_xpath('//*[@id="portlet_com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE_GhAIpHlwoE3O"]/div/div/div/div[2]/div/div[2]/div/a')[0]
         go_to_login.click()
         # TODO: Allen - replace the placeholder input with the user-given stuff
         username_box = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,'username')))
-        username_box.send_keys("west.all")
+        username_box.send_keys(self.username)
         password_box = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,'password')))
-        password_box.send_keys(PASS)
-        print("hello)")
+        password_box.send_keys(self.password)
         login = driver.find_elements_by_xpath("/html/body/section/div/div[1]/div/form/div[3]/button")[0]
         login.click()
         WebDriverWait(webdriver, 5)
@@ -55,15 +55,10 @@ class PriorityScript:
         WebDriverWait(driver, 10)
         driver.execute_script("window.open('https://google.com','_blank')")
         driver.switch_to.window(driver.window_handles[0])
-        time.sleep(10)
-        print("Got here1")
+        while (driver.current_url == "https://neuidmsso.neu.edu/idp/profile/SAML2/POST/SSO?execution=e1s3"):
+            time.sleep(1)
         driver.switch_to.window(driver.window_handles[1])
-        driver.get("https://nubanner.neu.edu/StudentRegistrationSsb")
 
-    def link_has_gone_stale(self, driver):
-        try:
-            # poll the link with an arbitrary call
-            driver.find_elements_by_id('mail')
-            return False
-        except StaleElementReferenceException:
-            return True
+    # The "by priority list" version of the script.
+    def runPriorityScript(self, driver):
+        driver.get("https://nubanner.neu.edu/StudentRegistrationSsb")
