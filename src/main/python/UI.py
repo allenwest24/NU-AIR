@@ -10,6 +10,7 @@ from selenium import webdriver
 from ScriptRunner import ScriptRunner
 
 # General Python imports.
+from functools import partial
 import sys
 
 # TODO: Allen - Fix this monstrosity
@@ -28,6 +29,7 @@ class UI(QMainWindow):
         self.temp_type = ""
         self.temp_pass = ""
         self.temp_uname = ""
+        self.crns = ""
 
 
         # TODO: Allen - Find and set the icon for top left corner next to title.
@@ -160,7 +162,7 @@ class UI(QMainWindow):
         main_layout.setAlignment(Qt.AlignTop)
         main.setLayout(main_layout)
         self.temp_type = "priority"
-        runButton.clicked.connect(self.prompt_login)
+        runButton.clicked.connect(partial(self.prompt_login, crns = "Input crns: " + bigEditor.toPlainText()))
         return main
 
     def ui3(self):
@@ -189,8 +191,9 @@ class UI(QMainWindow):
 
     # Login popup box.
     # TODO: Allen - make this shit take user input.
-    def prompt_login(self):
+    def prompt_login(self, crns):
         # A boolean representing whether the user has logged in already this session.
+        print(crns)
         firstLogin = (self.temp_pass == "" and self.temp_uname == "")
         if (firstLogin):
             loginBox = QMessageBox()
