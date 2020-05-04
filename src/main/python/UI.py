@@ -13,8 +13,8 @@ from ScriptRunner import ScriptRunner
 import sys
 
 # TODO: Allen - Fix this monstrosity
-TEMP_USERNAME = "west.all"
-TEMP_PASS = "tenorrocks"
+TEMP_USERNAME = "uname"
+TEMP_PASS = "password"
 
 # Runs the user interface for the entire application.
 class UI(QMainWindow):
