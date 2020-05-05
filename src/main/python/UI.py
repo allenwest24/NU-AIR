@@ -133,6 +133,7 @@ class UI(QMainWindow):
 
     def ui2(self):
         main_layout = QGridLayout()
+        global bigEditor
         bigEditor = QTextEdit()
         runButton = QPushButton("Run")
         main_layout.addWidget(bigEditor, 0, 1, 5, 4)
@@ -162,7 +163,7 @@ class UI(QMainWindow):
         main_layout.setAlignment(Qt.AlignTop)
         main.setLayout(main_layout)
         self.temp_type = "priority"
-        runButton.clicked.connect(partial(self.prompt_login, crns = "Input crns: " + bigEditor.toPlainText()))
+        runButton.clicked.connect(self.prompt_login)
         return main
 
     def ui3(self):
@@ -192,8 +193,12 @@ class UI(QMainWindow):
     # Login popup box.
     # TODO: Allen - make this shit take user input.
     def prompt_login(self, crns):
+        # Parse the user-given courses
+        # TODO: Allen - Possibly move this to a different function
+        crns = bigEditor.toPlainText()
+        classes = crns.split()
+
         # A boolean representing whether the user has logged in already this session.
-        print(crns)
         firstLogin = (self.temp_pass == "" and self.temp_uname == "")
         if (firstLogin):
             loginBox = QMessageBox()
@@ -208,9 +213,9 @@ class UI(QMainWindow):
                 # Run the script with the info to log in and what type of script we want.
                 self.temp_pass = TEMP_PASS
                 self.temp_uname = TEMP_USERNAME
-                scriptRunner = ScriptRunner(TEMP_USERNAME, TEMP_PASS, "CRNs", self.temp_type, "Term")
+                scriptRunner = ScriptRunner(TEMP_USERNAME, TEMP_PASS, classes, self.temp_type, "Term")
                 scriptRunner.run()
         # If user has already logged in, don't show the prompt login popup
         else:
-            scriptRunner = ScriptRunner(TEMP_USERNAME, TEMP_PASS, "CRNs", self.temp_type, "Term")
+            scriptRunner = ScriptRunner(TEMP_USERNAME, TEMP_PASS, classes, self.temp_type, "Term")
             scriptRunner.run()
