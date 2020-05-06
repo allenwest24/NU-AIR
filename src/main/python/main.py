@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 
 # Classes needed in main.
-from window import UI
+from UI import UI
 
 # General basic imports.
 import sys

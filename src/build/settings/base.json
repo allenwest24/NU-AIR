@@ -1,0 +1,6 @@
+{
+    "app_name": "NU-AIR",
+    "author": "Allen",
+    "main_module": "src/main/python/main.py",
+    "version": "0.0.0"
+}
