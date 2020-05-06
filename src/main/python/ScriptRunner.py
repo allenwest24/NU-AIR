@@ -77,6 +77,7 @@ class ScriptRunner:
         register_for_classes = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,'registerLink')))
         register_for_classes.click()
         self.selectTerm(driver)
+        self.registerAll(driver)
 
     # Select term
     def selectTerm(self, driver):
@@ -87,3 +88,17 @@ class ScriptRunner:
         fall.click()
         submit = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,'term-go')))
         submit.click()
+
+    # The actual 'algorithm' work for registering the crns.
+    def registerAll(self, driver):
+        crnTab = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID,'enterCRNs-tab')))
+        crnTab.click()
+        ii = 1
+        while ii <= len(self.crns):
+            txt_crn = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,"txt_crn" + str(ii))))
+            txt_crn.click()
+            txt_crn.send_keys(self.crns[ii - 1])
+            if ii < len(self.crns):
+                add_another = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,"addAnotherCRN")))
+                add_another.click()
+            ii += 1
