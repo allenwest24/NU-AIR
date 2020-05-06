@@ -91,14 +91,21 @@ class ScriptRunner:
 
     # The actual 'algorithm' work for registering the crns.
     def registerAll(self, driver):
+        # Switch to the easiest tab to enter in this info.
         crnTab = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID,'enterCRNs-tab')))
         crnTab.click()
+        # Actual parsing through the user-entered crns.
         ii = 1
         while ii <= len(self.crns):
+            # Click on the crn entry box.
             txt_crn = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,"txt_crn" + str(ii))))
             txt_crn.click()
+            # Send current top-priority crn.
             txt_crn.send_keys(self.crns[ii - 1])
+            # If we are going to want another one, click the button to add another entry box.
+            # If not, don't.
             if ii < len(self.crns):
                 add_another = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,"addAnotherCRN")))
                 add_another.click()
+            # Inrement through the provided crns.
             ii += 1

@@ -135,14 +135,28 @@ class UI(QMainWindow):
         main_layout = QGridLayout()
         global bigEditor
         bigEditor = QTextEdit()
+        unameBox = QLineEdit()
+        passBox = QLineEdit()
         runButton = QPushButton("Run")
-        main_layout.addWidget(bigEditor, 0, 1, 5, 4)
-        main_layout.addWidget(QPushButton("Clear"), 0, 0, 1, 1)
-        main_layout.addWidget(QPushButton("Check"), 1, 0, 1, 1)
-        main_layout.addWidget(QPushButton("Save"), 2, 0, 1, 1)
-        main_layout.addWidget(runButton, 3, 0, 1, 1)
-        main_layout.addWidget(QLabel('\n'), 4, 0, 1, 1)
-        main_layout.addWidget(QLabel('\n'), 5, 0, 1, 1)
+        courseSelection = QComboBox(self)
+        courseSelection.addItem("Fall 2020 Courses")
+        courseSelection.addItem("Spring 2021 Courses")
+        courseSelection.addItem("Summer 1, 2021 Courses")
+        courseSelection.addItem("Summer 2, 2021 Courses")
+        duoMethod = QComboBox(self)
+        duoMethod.addItem("Send me push notification")
+        duoMethod.addItem("Call me")
+        duoMethod.addItem("Enter Code")
+        main_layout.addWidget(bigEditor, 0, 1, 6, 3)
+        main_layout.addWidget(QLabel('Username:'), 0, 0, 1, 1)
+        main_layout.addWidget(unameBox, 1, 0, 1, 1)
+        main_layout.addWidget(QLabel('Password:'), 2, 0, 1, 1)
+        main_layout.addWidget(passBox, 3, 0, 1, 1)
+        main_layout.addWidget(courseSelection, 4, 0, 1, 1)
+        main_layout.addWidget(duoMethod, 5, 0, 1, 1)
+        main_layout.addWidget(runButton, 6, 3, 1, 1)
+        main_layout.addWidget(QPushButton("Schedule"), 6, 2, 1, 1)
+        main_layout.addWidget(QPushButton("Reset"), 6, 1, 1, 1)
         main_layout.addWidget(QLabel("This method allows you to register for "
         + "classes by listing the CRNs by priority. For the application to "
         + "read \neach CRN in order, please place one on each line like so:\n\n"
@@ -158,7 +172,7 @@ class UI(QMainWindow):
         + "The application will tell you if your time slot is up, or how much "
         + "time you have to wait. \n\nIf you keep the application running until "
         + "your time card is up, it will automatically enroll you as soon as "
-        + "the website allows! :)"), 6, 0, 1, 4)
+        + "the website allows! :)"), 7, 0, 1, 4)
         main = QWidget()
         main_layout.setAlignment(Qt.AlignTop)
         main.setLayout(main_layout)
