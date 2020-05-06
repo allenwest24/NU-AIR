@@ -76,3 +76,13 @@ class ScriptRunner:
         # Get to the select term screen.
         register_for_classes = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,'registerLink')))
         register_for_classes.click()
+        WebDriverWait(driver, 5)
+        term_selector = driver.find_element_by_xpath("/html/body/main/div[3]/div/div/div[2]/div[1]/fieldset/div[2]/div[1]/div[1]/a/span[2]/b")
+        term_selector.click()
+        # These are all my sad attempts.
+        #term_input = driver.find_element_by_xpath("/html/body/div[5]/ul/li[1]")
+        #term_input.click()
+        #term_input = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,'s2id_autogen1_search')))
+        #term_input.sendKeys("dfhfgh")
+        #term_selector = driver.find_element_by_xpath("/html/body/div[5]/ul")
+        #term_selector.select()

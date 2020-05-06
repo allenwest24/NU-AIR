@@ -194,9 +194,9 @@ class UI(QMainWindow):
     # TODO: Allen - make this shit take user input.
     def prompt_login(self, crns):
         # Parse the user-given courses
-        # TODO: Allen - Possibly move this to a different function
-        crns = bigEditor.toPlainText()
-        classes = crns.split()
+        crns = bigEditor.toPlainText().split()
+        # TODO: Allen - Remove this eventually.
+        print(crns)
 
         # A boolean representing whether the user has logged in already this session.
         firstLogin = (self.temp_pass == "" and self.temp_uname == "")
@@ -213,9 +213,9 @@ class UI(QMainWindow):
                 # Run the script with the info to log in and what type of script we want.
                 self.temp_pass = TEMP_PASS
                 self.temp_uname = TEMP_USERNAME
-                scriptRunner = ScriptRunner(TEMP_USERNAME, TEMP_PASS, classes, self.temp_type, "Term")
+                scriptRunner = ScriptRunner(TEMP_USERNAME, TEMP_PASS, crns, self.temp_type, "Term")
                 scriptRunner.run()
         # If user has already logged in, don't show the prompt login popup
         else:
-            scriptRunner = ScriptRunner(TEMP_USERNAME, TEMP_PASS, classes, self.temp_type, "Term")
+            scriptRunner = ScriptRunner(TEMP_USERNAME, TEMP_PASS, crns, self.temp_type, "Term")
             scriptRunner.run()
