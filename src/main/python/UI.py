@@ -14,8 +14,8 @@ from functools import partial
 import sys
 
 # TODO: Allen - Fix this monstrosity
-TEMP_USERNAME = "username"
-TEMP_PASS = "password"
+TEMP_USERNAME = "west.all"
+TEMP_PASS = "tenorrocks"
 
 # Runs the user interface for the entire application.
 class UI(QMainWindow):
