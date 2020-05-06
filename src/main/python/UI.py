@@ -13,10 +13,6 @@ from ScriptRunner import ScriptRunner
 from functools import partial
 import sys
 
-# TODO: Allen - Fix this monstrosity
-TEMP_USERNAME = "username"
-TEMP_PASS = "password"
-
 # Runs the user interface for the entire application.
 class UI(QMainWindow):
     def __init__(self):
@@ -135,8 +131,11 @@ class UI(QMainWindow):
         main_layout = QGridLayout()
         global bigEditor
         bigEditor = QTextEdit()
+        global unameBox
         unameBox = QLineEdit()
+        global passBox
         passBox = QLineEdit()
+        passBox.setEchoMode(QLineEdit.Password)
         runButton = QPushButton("Run")
         courseSelection = QComboBox(self)
         courseSelection.addItem("Fall 2020 Courses")
@@ -209,27 +208,16 @@ class UI(QMainWindow):
     def prompt_login(self, crns):
         # Parse the user-given courses
         crns = bigEditor.toPlainText().split()
-        # TODO: Allen - Remove this eventually.
-        print(crns)
-
-        # A boolean representing whether the user has logged in already this session.
-        firstLogin = (self.temp_pass == "" and self.temp_uname == "")
-        if (firstLogin):
-            loginBox = QMessageBox()
-            loginBox.setWindowTitle("Login to MyNEU")
-            loginBox.setGeometry(409, 343, 680, 500)
-            loginBox.setText("This shit has been giving me such a hard time\n"
-            + "so for now we will just assume that the right stuff was entered")
-            loginBox.setStandardButtons(QMessageBox.Apply | QMessageBox.Cancel)
-            x = loginBox.exec()
-            # User pressed apply.
-            if (x == 33554432):
-                # Run the script with the info to log in and what type of script we want.
-                self.temp_pass = TEMP_PASS
-                self.temp_uname = TEMP_USERNAME
-                scriptRunner = ScriptRunner(TEMP_USERNAME, TEMP_PASS, crns, self.temp_type, "Term")
-                scriptRunner.run()
-        # If user has already logged in, don't show the prompt login popup
-        else:
-            scriptRunner = ScriptRunner(TEMP_USERNAME, TEMP_PASS, crns, self.temp_type, "Term")
+        username = unameBox.text()
+        password = passBox.text()
+        popUpBox = QMessageBox()
+        popUpBox.setWindowTitle("Helpful Reminder")
+        popUpBox.setGeometry(409, 343, 680, 500)
+        popUpBox.setText("You're going to want to click stuff, DON'T.\n"
+        + "The only thing you should do is respond to the duo query to your device.")
+        popUpBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        x = popUpBox.exec()
+        # User pressed ok.
+        if (x == 1024):
+            scriptRunner = ScriptRunner(username, password, crns, self.temp_type, "Term")
             scriptRunner.run()
