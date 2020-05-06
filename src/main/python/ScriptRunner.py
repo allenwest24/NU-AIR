@@ -43,23 +43,23 @@ class ScriptRunner:
         go_to_login.click()
         # TODO: Allen - replace the placeholder input with the user-given stuff
         # Fill the boxes with the given username and password.
-        #username_box = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,'username')))
-        #username_box.send_keys(self.username)
-        #password_box = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,'password')))
-        #password_box.send_keys(self.password)
+        username_box = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,'username')))
+        username_box.send_keys(self.username)
+        password_box = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,'password')))
+        password_box.send_keys(self.password)
         # Click the login button.
-        #login = driver.find_elements_by_xpath("/html/body/section/div/div[1]/div/form/div[3]/button")[0]
-        #login.click()
+        login = driver.find_elements_by_xpath("/html/body/section/div/div[1]/div/form/div[3]/button")[0]
+        login.click()
         # TODO: Allen - allow for user to use any of the three types of duo notifications.
         # Handle sending a duo push messahe for dual verification.
-        #WebDriverWait(webdriver, 5)
-        #driver.switch_to.frame("duo_iframe")
-        #send_push = driver.find_element_by_xpath('//*[@id="auth_methods"]/fieldset/div[1]/button')
-        #send_push.click()
-        #WebDriverWait(driver, 10)
+        WebDriverWait(webdriver, 5)
+        driver.switch_to.frame("duo_iframe")
+        send_push = driver.find_element_by_xpath('//*[@id="auth_methods"]/fieldset/div[1]/button')
+        send_push.click()
+        WebDriverWait(driver, 10)
         # Get back the main frame back from the duo frame.
-        #driver.switch_to.default_content()
-        #WebDriverWait(driver, 10)
+        driver.switch_to.default_content()
+        WebDriverWait(driver, 10)
         # Open another tab at google.
         driver.execute_script("window.open('https://google.com','_blank')")
         driver.switch_to.window(driver.window_handles[0])
