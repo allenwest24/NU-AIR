@@ -23,10 +23,6 @@ class UI(QMainWindow):
         self.width = 680
         self.height = 500
         self.temp_type = ""
-        self.temp_pass = ""
-        self.temp_uname = ""
-        self.crns = ""
-
 
         # TODO: Allen - Find and set the icon for top left corner next to title.
         #self.setWindowIcon(QtGui.QIcon(""))
@@ -137,11 +133,13 @@ class UI(QMainWindow):
         passBox = QLineEdit()
         passBox.setEchoMode(QLineEdit.Password)
         runButton = QPushButton("Run")
-        courseSelection = QComboBox(self)
-        courseSelection.addItem("Fall 2020 Courses")
-        courseSelection.addItem("Spring 2021 Courses")
-        courseSelection.addItem("Summer 1, 2021 Courses")
-        courseSelection.addItem("Summer 2, 2021 Courses")
+        global termSelection
+        termSelection = QComboBox(self)
+        termSelection.addItem("Fall 2020 Courses")
+        termSelection.addItem("Spring 2021 Courses")
+        termSelection.addItem("Summer 1, 2021 Courses")
+        termSelection.addItem("Summer 2, 2021 Courses")
+        global duoMethod
         duoMethod = QComboBox(self)
         duoMethod.addItem("Send me push notification")
         duoMethod.addItem("Call me")
@@ -151,7 +149,7 @@ class UI(QMainWindow):
         main_layout.addWidget(unameBox, 1, 0, 1, 1)
         main_layout.addWidget(QLabel('Password:'), 2, 0, 1, 1)
         main_layout.addWidget(passBox, 3, 0, 1, 1)
-        main_layout.addWidget(courseSelection, 4, 0, 1, 1)
+        main_layout.addWidget(termSelection, 4, 0, 1, 1)
         main_layout.addWidget(duoMethod, 5, 0, 1, 1)
         main_layout.addWidget(runButton, 6, 3, 1, 1)
         main_layout.addWidget(QPushButton("Schedule"), 6, 2, 1, 1)
@@ -210,7 +208,11 @@ class UI(QMainWindow):
         crns = bigEditor.toPlainText().split()
         username = unameBox.text()
         password = passBox.text()
+        duo = str(duoMethod.currentText())
+        term = str(termSelection.currentText())
+
         popUpBox = QMessageBox()
+        popUpBox.setIcon(QMessageBox.Information)
         popUpBox.setWindowTitle("Helpful Reminder")
         popUpBox.setGeometry(409, 343, 680, 500)
         popUpBox.setText("You're going to want to click stuff, DON'T.\n"
@@ -219,5 +221,5 @@ class UI(QMainWindow):
         x = popUpBox.exec()
         # User pressed ok.
         if (x == 1024):
-            scriptRunner = ScriptRunner(username, password, crns, self.temp_type, "Term")
+            scriptRunner = ScriptRunner(username, password, crns, self.temp_type, term, duo)
             scriptRunner.run()

@@ -17,12 +17,13 @@ import time
 
 # Class that will handle the CRN priority registering version of the application.
 class ScriptRunner:
-    def __init__(self, username, password, CRNs, type, term):
+    def __init__(self, username, password, CRNs, type, term, duo):
         self.username = username
         self.password = password
         self.crns = CRNs
         self.type = type
         self.term = term
+        self.duo = duo
 
     # Called from the UI
     def run(self):
