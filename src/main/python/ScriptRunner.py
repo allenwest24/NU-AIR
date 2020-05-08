@@ -51,12 +51,8 @@ class ScriptRunner:
         # Click the login button.
         login = driver.find_elements_by_xpath("/html/body/section/div/div[1]/div/form/div[3]/button")[0]
         login.click()
-        # TODO: Allen - allow for user to use any of the three types of duo notifications.
-        # Handle sending a duo push messahe for dual verification.
         WebDriverWait(webdriver, 5)
-        driver.switch_to.frame("duo_iframe")
-        send_push = driver.find_element_by_xpath('//*[@id="auth_methods"]/fieldset/div[1]/button')
-        send_push.click()
+        self.sendDuoCheck(driver)
         WebDriverWait(driver, 10)
         # Get back the main frame back from the duo frame.
         driver.switch_to.default_content()
@@ -69,6 +65,17 @@ class ScriptRunner:
             time.sleep(1)
         # Go to the new tab and use the credible session in the other tab to do whatever we want in this tab.
         driver.switch_to.window(driver.window_handles[1])
+
+    # Depending on what duo you have set up this will allow you to select the proper choice.
+    def sendDuoCheck(self, driver):
+        driver.switch_to.frame("duo_iframe")
+        if self.duo == "Send me push notification":
+            send_push = driver.find_element_by_xpath('//*[@id="auth_methods"]/fieldset/div[1]/button')
+        elif self.duo == "Call me":
+            send_push = driver.find_element_by_xpath('//*[@id="auth_methods"]/fieldset/div[2]/button')
+        elif self.duo == "Enter Code":
+            send_push = driver.find_element_by_xpath('//*[@id="auth_methods"]/fieldset/div[3]/button')
+        send_push.click()
 
     # The "by priority list" version of the script.
     def runPriorityScript(self, driver):

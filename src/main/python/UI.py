@@ -124,22 +124,26 @@ class UI(QMainWindow):
         return main
 
     def ui2(self):
-        main_layout = QGridLayout()
+        # Need to do this in order to acces current states when we run.
+        # Otherwise it will always be default values.
         global bigEditor
-        bigEditor = QTextEdit()
         global unameBox
-        unameBox = QLineEdit()
         global passBox
+        global termSelection
+        global duoMethod
+
+        # Initialize values.
+        main_layout = QGridLayout()
+        bigEditor = QTextEdit()
+        unameBox = QLineEdit()
         passBox = QLineEdit()
         passBox.setEchoMode(QLineEdit.Password)
         runButton = QPushButton("Run")
-        global termSelection
         termSelection = QComboBox(self)
         termSelection.addItem("Fall 2020 Courses")
         termSelection.addItem("Spring 2021 Courses")
         termSelection.addItem("Summer 1, 2021 Courses")
         termSelection.addItem("Summer 2, 2021 Courses")
-        global duoMethod
         duoMethod = QComboBox(self)
         duoMethod.addItem("Send me push notification")
         duoMethod.addItem("Call me")
@@ -211,6 +215,7 @@ class UI(QMainWindow):
         duo = str(duoMethod.currentText())
         term = str(termSelection.currentText())
 
+        # Start doing some work son!
         popUpBox = QMessageBox()
         popUpBox.setIcon(QMessageBox.Information)
         popUpBox.setWindowTitle("Helpful Reminder")
