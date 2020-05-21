@@ -29,9 +29,11 @@ class ScriptRunner:
     def run(self):
         # Add the chromedriver
         chromedriver = r"C:\Users\Allen\Desktop\NU-AIR\src\main\resources\base\chromedriver"
+        print("3")
         # TODO: Allen - figure out how to get_resource for the chromedriver.
         #chromedriver = self.get_resource('chromedriver')
         driver = webdriver.Chrome(chromedriver)
+        print("4")
         self.login(driver)
         if (self.type == "priority"):
             self.runPriorityScript(driver)

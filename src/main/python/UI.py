@@ -205,8 +205,6 @@ class UI(QMainWindow):
         main.setLayout(main_layout)
         return main
 
-    # Login popup box.
-    # TODO: Allen - make this shit take user input.
     def prompt_login(self, crns):
         # Parse the user-given courses
         crns = bigEditor.toPlainText().split()
@@ -226,5 +224,7 @@ class UI(QMainWindow):
         x = popUpBox.exec()
         # User pressed ok.
         if (x == 1024):
+            print("1")
             scriptRunner = ScriptRunner(username, password, crns, self.temp_type, term, duo)
+            print("2")
             scriptRunner.run()
