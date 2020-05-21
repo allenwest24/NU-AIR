@@ -118,3 +118,7 @@ class ScriptRunner:
                 add_another.click()
             # Inrement through the provided crns.
             ii += 1
+        add2Sum = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID,'addCRNbutton')))
+        add2Sum.click()
+        saveButt = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID,'saveButton')))
+        saveButt.click()
