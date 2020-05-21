@@ -224,7 +224,5 @@ class UI(QMainWindow):
         x = popUpBox.exec()
         # User pressed ok.
         if (x == 1024):
-            print("1")
             scriptRunner = ScriptRunner(username, password, crns, self.temp_type, term, duo)
-            print("2")
             scriptRunner.run()

@@ -29,11 +29,9 @@ class ScriptRunner:
     def run(self):
         # Add the chromedriver
         chromedriver = r"C:\Users\Allen\Desktop\NU-AIR\src\main\resources\base\chromedriver"
-        print("3")
         # TODO: Allen - figure out how to get_resource for the chromedriver.
         #chromedriver = self.get_resource('chromedriver')
         driver = webdriver.Chrome(chromedriver)
-        print("4")
         self.login(driver)
         if (self.type == "priority"):
             self.runPriorityScript(driver)
@@ -90,6 +88,7 @@ class ScriptRunner:
         self.registerAll(driver)
 
     # Select term
+    # TODO: Allen - A major todo here will be the fact that we need to wait until the user is able to register and only THEN go past this point.
     def selectTerm(self, driver):
         term_selector = driver.find_element_by_xpath("/html/body/main/div[3]/div/div/div[2]/div[1]/fieldset/div[2]/div[1]/div[1]/a/span[1]")
         term_selector.click()
