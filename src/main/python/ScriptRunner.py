@@ -5,6 +5,7 @@ from PyQt5.QtGui import *
 
 # Selenium imports.
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
@@ -28,10 +29,12 @@ class ScriptRunner:
     # Called from the UI
     def run(self):
         # Add the chromedriver
-        chromedriver = r"C:\Users\Allen\Desktop\NU-AIR\src\main\resources\base\chromedriver"
         # TODO: Allen - figure out how to get_resource for the chromedriver.
-        #chromedriver = self.get_resource('chromedriver')
-        driver = webdriver.Chrome(chromedriver)
+        # With this new import using the ChromeDriverManager we no longer need
+        # to manually go in and update the ChromeDriver every time a new one is
+        # available. Just run 'pip install webdriver-manager' before using
+        # this code. ChromeDriverManager is unreal.
+        driver = webdriver.Chrome(ChromeDriverManager().install())
         self.login(driver)
         if (self.type == "priority"):
             self.runPriorityScript(driver)
@@ -69,12 +72,12 @@ class ScriptRunner:
     # Depending on what duo you have set up this will allow you to select the proper choice.
     def sendDuoCheck(self, driver):
         driver.switch_to.frame("duo_iframe")
-        if self.duo == "Send me push notification":
-            send_push = driver.find_element_by_xpath('//*[@id="auth_methods"]/fieldset/div[1]/button')
-        elif self.duo == "Call me":
-            send_push = driver.find_element_by_xpath('//*[@id="auth_methods"]/fieldset/div[2]/button')
-        elif self.duo == "Enter Code":
-            send_push = driver.find_element_by_xpath('//*[@id="auth_methods"]/fieldset/div[3]/button')
+        switcher = {
+            "Send me push notification": driver.find_element_by_xpath('//*[@id="auth_methods"]/fieldset/div[1]/button')
+            "Call me": driver.find_element_by_xpath('//*[@id="auth_methods"]/fieldset/div[2]/button')
+            "Enter Code": driver.find_element_by_xpath('//*[@id="auth_methods"]/fieldset/div[3]/button')
+        }
+        send_push = switcher.get(self.duo, None)
         send_push.click()
 
     # The "by priority list" version of the script.
