@@ -132,13 +132,23 @@ class UI(QMainWindow):
         global termSelection
         global duoMethod
 
-        # Initialize values.
+        # Initialize layout.
         main_layout = QGridLayout()
+
+        # Initialize crn entry box.
         bigEditor = QTextEdit()
+
+        # Initialize username and password boxes.
         unameBox = QLineEdit()
         passBox = QLineEdit()
         passBox.setEchoMode(QLineEdit.Password)
+
+        # Initialize the buttons.
         runButton = QPushButton("Run")
+        resetButton = QPushButton("Reset")
+        scheduleButton = QPushButton("Schedule")
+
+        # Initialize the selector boxes and set options.
         termSelection = QComboBox(self)
         termSelection.addItem("Fall 2020 Courses")
         termSelection.addItem("Spring 2021 Courses")
@@ -148,6 +158,8 @@ class UI(QMainWindow):
         duoMethod.addItem("Send me push notification")
         duoMethod.addItem("Call me")
         duoMethod.addItem("Enter Code")
+
+        # Dump it all into layout.
         main_layout.addWidget(bigEditor, 0, 1, 6, 3)
         main_layout.addWidget(QLabel('Username:'), 0, 0, 1, 1)
         main_layout.addWidget(unameBox, 1, 0, 1, 1)
@@ -156,8 +168,8 @@ class UI(QMainWindow):
         main_layout.addWidget(termSelection, 4, 0, 1, 1)
         main_layout.addWidget(duoMethod, 5, 0, 1, 1)
         main_layout.addWidget(runButton, 6, 3, 1, 1)
-        main_layout.addWidget(QPushButton("Schedule"), 6, 2, 1, 1)
-        main_layout.addWidget(QPushButton("Reset"), 6, 1, 1, 1)
+        main_layout.addWidget(scheduleButton, 6, 2, 1, 1)
+        main_layout.addWidget(resetButton, 6, 1, 1, 1)
         main_layout.addWidget(QLabel("This method allows you to register for "
         + "classes by listing the CRNs by priority. For the application to "
         + "read \neach CRN in order, please place one on each line like so:\n\n"
@@ -178,6 +190,7 @@ class UI(QMainWindow):
         main_layout.setAlignment(Qt.AlignTop)
         main.setLayout(main_layout)
         self.temp_type = "priority"
+        resetButton.clicked.connect(bigEditor.clear)
         runButton.clicked.connect(self.prompt_login)
         return main
 

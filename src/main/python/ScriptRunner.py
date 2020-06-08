@@ -73,8 +73,8 @@ class ScriptRunner:
     def sendDuoCheck(self, driver):
         driver.switch_to.frame("duo_iframe")
         switcher = {
-            "Send me push notification": driver.find_element_by_xpath('//*[@id="auth_methods"]/fieldset/div[1]/button')
-            "Call me": driver.find_element_by_xpath('//*[@id="auth_methods"]/fieldset/div[2]/button')
+            "Send me push notification": driver.find_element_by_xpath('//*[@id="auth_methods"]/fieldset/div[1]/button'),
+            "Call me": driver.find_element_by_xpath('//*[@id="auth_methods"]/fieldset/div[2]/button'),
             "Enter Code": driver.find_element_by_xpath('//*[@id="auth_methods"]/fieldset/div[3]/button')
         }
         send_push = switcher.get(self.duo, None)
