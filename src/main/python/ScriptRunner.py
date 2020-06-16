@@ -28,8 +28,6 @@ class ScriptRunner:
 
     # Called from the UI
     def run(self):
-        # Add the chromedriver
-        # TODO: Allen - figure out how to get_resource for the chromedriver.
         # With this new import using the ChromeDriverManager we no longer need
         # to manually go in and update the ChromeDriver every time a new one is
         # available. Just run 'pip install webdriver-manager' before using
@@ -95,9 +93,15 @@ class ScriptRunner:
     def selectTerm(self, driver):
         term_selector = driver.find_element_by_xpath("/html/body/main/div[3]/div/div/div[2]/div[1]/fieldset/div[2]/div[1]/div[1]/a/span[1]")
         term_selector.click()
-        # TODO - Allen - make this into a switch for all the different terms you are allowed to select.
-        fall = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,'202110')))
-        fall.click()
+        # TODO - Allen - Fix it to the actual terms available
+        switcher = {
+            "Fall 2020 Courses": WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,'202110'))),
+            "Spring 2021 Courses": WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,'202110'))),
+            "Summer 1, 2021 Courses": WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,'202110'))),
+            "Summer 2, 2021 Courses": WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,'202110')))
+        }
+        term = switcher.get(self.term, None)
+        term.click()
         submit = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,'term-go')))
         submit.click()
 

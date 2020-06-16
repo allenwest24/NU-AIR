@@ -2,6 +2,7 @@
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
+from PyQt5 import QtGui
 
 # Selenium imports
 from selenium import webdriver
@@ -25,7 +26,7 @@ class UI(QMainWindow):
         self.temp_type = ""
 
         # TODO: Allen - Find and set the icon for top left corner next to title.
-        #self.setWindowIcon(QtGui.QIcon(""))
+        self.setWindowIcon(QtGui.QIcon('NU-AIR-logo.png'))
         self.InitButtons()
         self.InitWindow()
 
@@ -186,12 +187,17 @@ class UI(QMainWindow):
         + "time you have to wait. \n\nIf you keep the application running until "
         + "your time card is up, it will automatically enroll you as soon as "
         + "the website allows! :)"), 7, 0, 1, 4)
+
+        # Set layout and alignment.
         main = QWidget()
         main_layout.setAlignment(Qt.AlignTop)
         main.setLayout(main_layout)
         self.temp_type = "priority"
+
+        # Link buttons to functions.
         resetButton.clicked.connect(bigEditor.clear)
         runButton.clicked.connect(self.prompt_login)
+
         return main
 
     def ui3(self):
@@ -238,4 +244,5 @@ class UI(QMainWindow):
         # User pressed ok.
         if (x == 1024):
             scriptRunner = ScriptRunner(username, password, crns, self.temp_type, term, duo)
-            scriptRunner.run()
+            out = scriptRunner.run()
+            print(out)
