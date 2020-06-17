@@ -118,9 +118,47 @@ class UI(QMainWindow):
     # Set pages.
     def ui1(self):
         main_layout = QGridLayout()
-        main_layout.addWidget(QLabel('Feature not yet available!'))
+
+        welcome_msg = QLabel("\n\n\n\n\n               Welcome!")
+        welcome_msg.setFont(QtGui.QFont("Arial", 12, QtGui.QFont.Bold))
+        welcome_inst = QLabel("    Select a registration method on the\n"
+        + "                  left to get started!\n\n\n\n\n\n\n")
+        priority_header = QLabel("             By Priority")
+        priority_header.setFont(QtGui.QFont("Arial", 10, QtGui.QFont.Bold))
+        mock_sched_header = QLabel("     Upload Mock Schedule")
+        mock_sched_header.setFont(QtGui.QFont("Arial", 10, QtGui.QFont.Bold))
+        sched_header = QLabel("         Create Schedule")
+        sched_header.setFont(QtGui.QFont("Arial", 10, QtGui.QFont.Bold))
+        priority = QLabel("- List CRNS for classes you want\n"
+        + "- Will log you in based on info you \n  provide\n"
+        + "- Maneuvers to course registration\n"
+        + "- Waits until your time card comes up\n"
+        + "- Registers you for classes in order\n"
+        + "- If any classes fail, will try again \n  with the next on the list!\n"
+        + "- Repeats until credit limit is reached!")
+        mock_sched = QLabel("- Login to grab a pre-made schedule\n"
+        + "- Retrieve schedule to utilize here \n "
+        + "- Set your desired schedules\n"
+        + "- Select whether you want full schedule\n  priority or by class.\n"
+        + "- Logs you in and maneuvers to\n  registration\n"
+        + "- Will register by CRNs according to\n  specifications")
+        sched = QLabel("- Make your ideal schedule/schedules\n"
+        + "- Select whether you want full schedule\n  priority or by class.\n"
+        + "- Logs you in according to your inputs\n"
+        + "- Maneuvers you to registration\n"
+        + "- Waits until your time card arrives \n "
+        + "- Will register by CRNs according to\n  specifications\n")
+
+        main_layout.addWidget(welcome_msg, 0, 1, 1, 1)
+        main_layout.addWidget(welcome_inst, 1, 1, 1, 1)
+        main_layout.addWidget(priority_header, 2, 0, 1, 1)
+        main_layout.addWidget(mock_sched_header, 2, 1, 1, 1)
+        main_layout.addWidget(sched_header, 2, 2, 1, 1)
+        main_layout.addWidget(priority, 3, 0, 1, 1)
+        main_layout.addWidget(mock_sched, 3, 1, 1, 1)
+        main_layout.addWidget(sched, 3, 2, 1, 1)
         main = QWidget()
-        main_layout.setAlignment(Qt.AlignCenter)
+        main_layout.setAlignment(Qt.AlignTop)
         main.setLayout(main_layout)
         return main
 
@@ -245,4 +283,3 @@ class UI(QMainWindow):
         if (x == 1024):
             scriptRunner = ScriptRunner(username, password, crns, self.temp_type, term, duo)
             out = scriptRunner.run()
-            print(out)
