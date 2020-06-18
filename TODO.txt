@@ -1,10 +1,10 @@
 Comprehensive List of Things We Want to Do:
 - UI
-    - () Make Home window
+    - (DONE) Make Home window
     - (DONE) Add title to window
     - (DONE) Make side bar options
-    - () Create prompts for the screens
-    - () Create run buttons for each screen that dynamically run according to method
+    - (2/5) Create prompts for the screens
+    - (1/3) Create run buttons for each screen that dynamically run according to method
     - () Add logo in top left
     - () help bar
     - () Make credits
@@ -31,7 +31,7 @@ Comprehensive List of Things We Want to Do:
     - () Add the 'wait for time slot' feature by default.
         
 - Packaging
-    - (In progress) README.md for description
+    - (DONE) README.md for description
     - () download instructions
     - () license
-    - () resources
+    - (IN Progress) resources
