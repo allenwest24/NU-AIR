@@ -26,7 +26,7 @@ class UI(QMainWindow):
         self.temp_type = ""
 
         # TODO: Allen - Find and set the icon for top left corner next to title.
-        self.setWindowIcon(QtGui.QIcon('NU-AIR-logo.png'))
+        self.setWindowIcon(QtGui.QIcon('./logo.png'))
         self.InitButtons()
         self.InitWindow()
 
@@ -256,9 +256,32 @@ class UI(QMainWindow):
 
     def ui5(self):
         main_layout = QGridLayout()
-        main_layout.addWidget(QLabel('Feature not yet available!'))
+
+        credit_msg = QLabel("\n   Credits!\n")
+        credit_msg.setFont(QtGui.QFont("Arial", 14, QtGui.QFont.Bold))
+        credit_quote = QLabel("\nLife is soup, i am fork..\n"
+        + "\n                              -some guy\n\n\n\n")
+        allen = QLabel("        Allen West")
+        allen.setFont(QtGui.QFont("Arial", 10, QtGui.QFont.Bold))
+        luke = QLabel("        Luke Andrews")
+        luke.setFont(QtGui.QFont("Arial", 10, QtGui.QFont.Bold))
+        allen_deets = QLabel("- Github:\n  https://github.com/allenwest24\n\n"
+        + "- LinkedIn:\n  https://www.linkedin.com/in/\n  allen-west-459031187/\n\n"
+        + "- Email:\n  west.all@husky.neu.edu\n\n"
+        + "- Current Position:\n  Cyber Security Coop, MIT Lincoln Laboratory")
+        luke_deets = QLabel("- Github:\n  https://github.com/lukeandrews239\n\n"
+        + "- LinkedIn:\n  https://www.linkedin.com/in/lukeandrews239/\n\n"
+        + "- Email:\n  andrews.lu@husky.neu.edu\n\n"
+        + "- Current Position:\n  Software Engineer Co-op, Apple")
+
+        main_layout.addWidget(credit_msg, 0, 1, 1, 1)
+        main_layout.addWidget(credit_quote, 1, 1, 1, 1)
+        main_layout.addWidget(allen, 2, 0, 1, 1)
+        main_layout.addWidget(luke, 2, 2, 1, 1)
+        main_layout.addWidget(allen_deets, 3, 0, 1, 1)
+        main_layout.addWidget(luke_deets, 3, 2, 1, 1)
         main = QWidget()
-        main_layout.setAlignment(Qt.AlignCenter)
+        main_layout.setAlignment(Qt.AlignTop)
         main.setLayout(main_layout)
         return main
 
