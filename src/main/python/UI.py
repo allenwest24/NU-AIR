@@ -189,10 +189,9 @@ class UI(QMainWindow):
 
         # Initialize the selector boxes and set options.
         termSelection = QComboBox(self)
-        termSelection.addItem("Fall 2020 Courses")
-        termSelection.addItem("Spring 2021 Courses")
-        termSelection.addItem("Summer 1, 2021 Courses")
-        termSelection.addItem("Summer 2, 2021 Courses")
+        termSelection.addItem("Fall 2020 Semester")
+        termSelection.addItem("Fall 2020 CPS Quarter")
+        termSelection.addItem("Fall 2020 CPS Semester")
         duoMethod = QComboBox(self)
         duoMethod.addItem("Send me push notification")
         duoMethod.addItem("Call me")

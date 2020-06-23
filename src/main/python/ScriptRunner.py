@@ -95,10 +95,9 @@ class ScriptRunner:
         term_selector.click()
         # TODO - Allen - Fix it to the actual terms available
         switcher = {
-            "Fall 2020 Courses": WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,'202110'))),
-            "Spring 2021 Courses": WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,'202110'))),
-            "Summer 1, 2021 Courses": WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,'202110'))),
-            "Summer 2, 2021 Courses": WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,'202110')))
+            "Fall 2020 Semester": WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,'202110'))),
+            "Fall 2020 CPS Quarter": WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,'202115'))),
+            "Fall 2020 CPS Semester": WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,'202114'))),
         }
         term = switcher.get(self.term, None)
         term.click()
