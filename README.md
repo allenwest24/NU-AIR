@@ -1,5 +1,5 @@
 # NU-AIR.py
-The NU And Improved Registration script for Northeastern University. 
+The NU And Improved Registration application for Northeastern University. 
 
 ### Story Time:
 This application is designed to fix a major flaw in my Unversity's course registration system. Registering for classes is one of
@@ -21,3 +21,4 @@ NU-AIR automatically enrolls you in the most optimal set of classes (specified b
 - https://www.youtube.com/watch?v=dz59GsdvUF8 for help with chromedriver setup
 - https://pythonspot.com/selenium-click-button/ for naviagting around with chromedriver
 - https://sites.google.com/a/chromium.org/chromedriver/downloads to update the monthly version of the chromedriver
+- https://doc.qt.io/qt-5/qmessagebox.html for help with PyQt5's QMessageBox 
