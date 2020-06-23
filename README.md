@@ -1,5 +1,5 @@
 # NU-AIR.py
-The NU And Improved Registration script for Northeastern University. 
+The NU And Improved Registration application for Northeastern University. 
 
 ### Story Time:
 This application is designed to fix a major flaw in my Unversity's course registration system. Registering for classes is one of
