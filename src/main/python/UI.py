@@ -234,7 +234,7 @@ class UI(QMainWindow):
 
         # Link buttons to functions.
         resetButton.clicked.connect(bigEditor.clear)
-        runButton.clicked.connect(self.prompt_login)
+        runButton.clicked.connect(self.check_for_inputs)
 
         return main
 
@@ -285,11 +285,28 @@ class UI(QMainWindow):
         main.setLayout(main_layout)
         return main
 
-    def prompt_login(self, crns):
-        # Parse the user-given courses
+    # Makes sure that every input box has been filled out.
+    def check_for_inputs(self, crns):
         crns = bigEditor.toPlainText().split()
         username = unameBox.text()
         password = passBox.text()
+        if (crns == "" or username == "" or password == ""):
+            error = QMessageBox()
+            error.setIcon(QMessageBox.Warning)
+            error.setWindowTitle("Input Required")
+            error.setGeometry(409, 343, 680, 500)
+            error.setText("Oops! Looks like you forgot to add some required input!\n"
+            + "Make sure all the fields are filled out and try again")
+            error.setStandardButtons(QMessageBox.Ok)
+            error.exec()
+        else:
+            self.prompt_login(crns, username, password)
+
+
+
+
+    def prompt_login(self, crns, username, password):
+        # Parse the user-given courses
         duo = str(duoMethod.currentText())
         term = str(termSelection.currentText())
 
