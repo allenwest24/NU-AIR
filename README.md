@@ -18,9 +18,13 @@ NU-AIR automatically enrolls you in the most optimal set of classes (specified b
     - Type "git clone git@github.com:allenwest24/NU-AIR.git"
 - Open the folder in Atom or some other Python text editor that can use PyQt5 and Selenium
 - Build/run
+
 <img align="center" width="500px" src="./NU-AIR-WelcomeScreen.PNG">
+
 - Choose your method of registration on the left.
+
 <img align="center" width="500px" src="./NU-AIR-PriorityScreen.PNG">
+
 - Press run.
 - Sit back and watch the program do its thing!
 
