@@ -4,12 +4,35 @@ The NU And Improved Registration application for Northeastern University.
 ### Story Time:
 This application is designed to fix a major flaw in my Unversity's course registration system. Registering for classes is one of
 the biggest (previously) unavoidable problems in the lives of college kids everywhere. The combination of too few 
-courses being offered, strict course requirements, and too few seats in those classes, turns registration by time-card into a 
-stress-filled, all-out sprint. Since the administration doesn't want to invest in a more efficient system, we have created our OWN 
+classes being offered, too few seats in those classes, and strict course requirements turns registration by time-slot into a 
+stress-filled, all-out sprint. Since the administration has other priorities, we have created our OWN 
 solution: NU-AIR.
 
 ### The Solution:
 NU-AIR automatically enrolls you in the most optimal set of classes (specified by the user in various formats) and when your time card comes up it will instantly register you for these classes. Essentially, if there was ever a possibility of you getting those classes you really need, NU-AIR would get them for you.
+
+### How to Use:
+- Clone this locally:
+    - Open GitBash
+    - Type "cd Desktop"
+    - Type "git clone git@github.com:allenwest24/NU-AIR.git"
+- Open the folder in Atom or some other Python text editor that can use PyQt5 and Selenium
+- Build/run
+- Choose your method of registration on the left.
+- Press run.
+- Sit back and watch the program do its thing!
+
+### Current State:
+- Completely automated registration.
+- Design features not yet implemented.
+- Checking for unopened or unavailable semsesters not yet available.
+- Currently working on the scheduling feature.
+- Check issues for more details.
+
+### How to contribute:
+- Create a branch and put in some work.
+    OR
+- Email me @ west.all@husky.neu.edu to collab.
 
 ### Resources:
 - https://github.com/mherrmann/fbs-tutorial for creating the venv and generating the proper file structure/code to start the app.
