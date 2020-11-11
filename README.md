@@ -2,7 +2,7 @@
 The NU And Improved Registration application for Northeastern University. 
 
 ### Story Time:
-This application is designed to fix a major flaw in my Unversity's course registration system. Registering for classes is one of
+This application is designed to fix a major flaw in my University's course registration system. Registering for classes is one of
 the biggest (previously) unavoidable problems in the lives of college kids everywhere. The combination of too few 
 classes being offered, too few seats in those classes, and strict course requirements turns registration by time-slot into a 
 stress-filled, all-out sprint. Since the administration has other priorities, we have created our OWN 
